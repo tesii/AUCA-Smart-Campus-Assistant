@@ -1,0 +1,99 @@
+<div class="page">
+
+  <!-- FORM + IMAGE SPLIT -->
+  <div class="form-container">
+
+    <!-- HEADER / BRAND -->
+    <div class="header">
+      <img src="assets/images/logo.jpg" class="logo" />
+    </div>
+
+    <!-- LEFT: LOGIN FORM -->
+    <div class="card">
+
+      <h2>Student Login</h2>
+      <p class="subtitle">
+        Sign in with your student credentials
+      </p>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+
+        <!-- STUDENT ID -->
+        <div class="input-group">
+          <label>Student ID</label>
+
+          <input
+            type="text"
+            name="studentId"
+            [(ngModel)]="user.studentId"
+            placeholder="Enter your Student ID"
+            required
+          />
+
+          <small
+            class="error"
+            *ngIf="loginForm.submitted && !user.studentId">
+
+            Student ID is required
+
+          </small>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+          <label>Password</label>
+
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="user.password"
+            placeholder="Enter your password"
+            required
+          />
+
+          <small
+            class="error"
+            *ngIf="loginForm.submitted && !user.password">
+
+            Password is required
+
+          </small>
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid">
+
+          Sign In
+
+        </button>
+
+        <!-- SIGNUP LINK -->
+        <div class="login-link">
+
+          <p>
+            Don't have an account?
+          </p>
+
+          <a routerLink="/create">
+            Signup
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="image-panel">
+      <img
+        src="assets/images/auca.jpg"
+        class="auca"
+      />
+    </div>
+
+  </div>
+
+</div>

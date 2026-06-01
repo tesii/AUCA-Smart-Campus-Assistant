@@ -1,0 +1,105 @@
+<div class="page">
+
+  <!-- Background Slider -->
+  <div class="bg-slider">
+    <div class="bg-slide slide1" [class.active]="currentSlide === 0"></div>
+    <div class="bg-slide slide2" [class.active]="currentSlide === 1"></div>
+    <div class="bg-slide slide3" [class.active]="currentSlide === 2"></div>
+  </div>
+  <div class="overlay"></div>
+  <div class="geo"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-logo" routerLink="/">
+      <div class="logo-box">
+        <img src="assets/images/Advlogo.png" alt="AUCA Logo">
+      </div>
+   
+    </a>
+
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="#">About <span class="arr">▾</span></a>
+        <div class="dropdown">
+          <a href="https://web.auca.ac.rw/about">About AUCA</a>
+          <a href="https://web.auca.ac.rw/about/history">History</a>
+          <a href="https://web.auca.ac.rw/about/beliefs-and-values">Beliefs &amp; Values</a>
+          <a href="https://web.auca.ac.rw/about/policies">AUCA Policies</a>
+          <a href="https://web.auca.ac.rw/about/staff">Staff</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">Academics <span class="arr">▾</span></a>
+        <div class="dropdown">
+          <a href="https://web.auca.ac.rw/academics/undergraduate">Undergraduate Programs</a>
+          <a href="https://web.auca.ac.rw/academics/graduate">Graduate Programs</a>
+          <a href="https://web.auca.ac.rw/academics/e-learning">E-Learning</a>
+          <a href="https://web.auca.ac.rw/academics/academics-utils">Academic Calendar</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">Admissions <span class="arr">▾</span></a>
+        <div class="dropdown">
+          <a href="https://web.auca.ac.rw/admissions/undergraduate-requirements">Undergraduate</a>
+          <a href="https://web.auca.ac.rw/admissions/nursing-requirements">Nursing &amp; Midwifery</a>
+          <a href="https://web.auca.ac.rw/admissions/masters-requirements">Masters</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="#">News &amp; Events <span class="arr">▾</span></a>
+        <div class="dropdown">
+          <a href="https://web.auca.ac.rw/news/latest-news">Latest News</a>
+          <a href="https://web.auca.ac.rw/news/evangelism">Evangelism</a>
+          <a href="https://web.auca.ac.rw/news/innovation">Innovation Center</a>
+        </div>
+      </li>
+      <li><a href="https://web.auca.ac.rw/research">Research</a></li>
+      <li><a class="nav-cta" href="https://web.auca.ac.rw/apply">Apply Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero / Landing Container -->
+  <div class="hero">
+    <div class="landing-container">
+
+    
+      <div class="badge"><div class="pulse"></div>Smart Campus Assistant</div>
+      <div class="campus-sub">Adventist University of Central Africa</div>
+
+      <h1>Shaping Africa's <em>Future Leaders</em></h1>
+
+      <p>Welcome to the system — a Christ-centered digital experience connecting
+        students, faculty, and resources across our vibrant Kigali campus.</p>
+
+      <div class="btn-wrap">
+        <a routerLink="/login" class="btn">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="18" width="32" height="18" rx="6" fill="#e8f0fe" stroke="#1565c0" stroke-width="2"/>
+            <rect x="18" y="8" width="12" height="10" rx="6" fill="#e8f0fe" stroke="#1565c0" stroke-width="2"/>
+            <rect x="22" y="2" width="4" height="6" rx="2" fill="#1565c0"/>
+            <circle cx="18" cy="27" r="2.5" fill="#1565c0"/>
+            <circle cx="30" cy="27" r="2.5" fill="#1565c0"/>
+            <rect x="16" y="34" width="16" height="4" rx="2" fill="#1565c0"/>
+            <rect x="6" y="22" width="4" height="8" rx="2" fill="#1565c0"/>
+            <rect x="38" y="22" width="4" height="8" rx="2" fill="#1565c0"/>
+            <rect x="12" y="14" width="4" height="4" rx="2" fill="#1565c0"/>
+            <rect x="32" y="14" width="4" height="4" rx="2" fill="#1565c0"/>
+            <rect x="20" y="38" width="8" height="2" rx="1" fill="#e8f0fe"/>
+          </svg>
+          AI CHATBOT
+        </a>
+        <a href="https://web.auca.ac.rw" class="btn-ghost">Explore AUCA</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Slide Dots -->
+  <div class="dots">
+    <button class="dot" [class.active]="currentSlide === 0" (click)="goTo(0)"></button>
+    <button class="dot" [class.active]="currentSlide === 1" (click)="goTo(1)"></button>
+    <button class="dot" [class.active]="currentSlide === 2" (click)="goTo(2)"></button>
+  </div>
+
+</div>

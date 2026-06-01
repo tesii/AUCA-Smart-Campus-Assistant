@@ -1,0 +1,108 @@
+<div class="page">
+
+  <!-- FORM + IMAGE SPLIT -->
+  <div class="form-container">
+
+    <!-- HEADER / BRAND -->
+    <div class="header">
+      <img src="assets/images/registerlogo.png" class="logo" />
+    </div>
+
+    <!-- LEFT: FORM -->
+    <div class="card">
+
+      <form (ngSubmit)="saveUser()" #userForm="ngForm">
+
+        <!-- STUDENT ID -->
+        <div class="input-group">
+          <label>Student ID</label>
+          <input
+            type="text"
+            name="studentId"
+            [(ngModel)]="user.studentId"
+            required
+          />
+          <small class="error" *ngIf="userForm.submitted && !user.studentId">
+            Student ID is required
+          </small>
+        </div>
+
+        <!-- FULL NAME -->
+        <div class="input-group">
+          <label>Full Name</label>
+          <input
+            type="text"
+            name="fullName"
+            [(ngModel)]="user.fullName"
+            required
+            minlength="3"
+          />
+          <small class="error" *ngIf="userForm.submitted && !user.fullName">
+            Full name is required
+          </small>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+          />
+          <small class="error" *ngIf="userForm.submitted && !user.email">
+            Email is required
+          </small>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+          />
+          <small class="error" *ngIf="userForm.submitted && !user.password">
+            Password is required
+          </small>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="input-group">
+          <label>Re-type Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="user.confirmPassword"
+            required
+          />
+
+          <small class="error"
+            *ngIf="userForm.submitted && user.password !== user.confirmPassword">
+            Passwords do not match
+          </small>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit" [disabled]="userForm.invalid">
+          Create Account
+        </button>
+        <div class="login-link">
+
+        <a routerLink="/login">Login</a>
+        </div>
+      </form>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="image-panel">
+      <img src="assets/images/auca.jpg" class="auca" />
+    </div>
+
+  </div>
+
+</div>

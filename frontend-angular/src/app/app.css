@@ -1,0 +1,61 @@
+/* layout.component.css */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #a5b6ef;
+  --accent-light: #e1f5ee;
+  --accent-dark: #89a1cf;
+  --sidebar-width: 220px;
+  --font-ui: 'Sora', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  font-family: var(--font-ui);
+  background: #f5f4f0;
+}
+
+/* ── Sidebar ── */
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size:25px;
+  font-weight: 600;
+  color: #10100f;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: -0.1px;
+}
+
+/* .sidebar a:hover {
+  background: #ecebef;
+  color: #1a1a18;
+} */
+
+.sidebar a.active,
+.sidebar a.router-link-active {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-weight: 500;
+}
+
+/* ── Main Content ── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f3f0f6;
+  padding: 32px;
+}

@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  font-family: 'DM Sans', sans-serif;
+  background: #0a1628;
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background Slider ── */
+.bg-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-slide.active { opacity: 1; }
+
+.bg-slide.slide1 {
+  background-image: url('/assets/images/ar.png'),
+    linear-gradient(135deg, #0a3d62 0%, #1a5276 40%, #0d47a1 100%);
+  background-blend-mode: overlay;
+}
+
+.bg-slide.slide2 {
+  background-image: url('/assets/images/ar1.png'),
+    linear-gradient(135deg, #1a237e 0%, #283593 40%, #0277bd 100%);
+  background-blend-mode: overlay;
+}
+
+.bg-slide.slide3 {
+  background-image: url('/assets/images/ar.png'),
+    linear-gradient(135deg, #004d40 0%, #00695c 40%, #1565c0 100%);
+  background-blend-mode: overlay;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 22, 40, 0.55) 0%,
+    rgba(10, 22, 40, 0.3) 40%,
+    rgba(10, 22, 40, 0.75) 100%
+  );
+  z-index: 1;
+}
+
+.geo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    45deg, #fff 0, #fff 1px, transparent 0, transparent 50%
+  );
+  background-size: 30px 30px;
+}
+
+/* ── Navigation ── */
+nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* FIXED: was 540px x 140px — now properly sized for navbar */
+.logo-box {
+  width: 200px;
+  height: 44px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand .name {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+.brand .sub {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-links > li {
+  position: relative;
+}
+
+.nav-links > li > a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 12.5px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.nav-links > li > a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-links > li:hover .arr {
+  transform: rotate(180deg);
+}
+
+.nav-links > li:hover .dropdown {
+  display: block;
+  animation: fadeDown 0.15s ease;
+}
+
+.arr {
+  font-size: 9px;
+  opacity: 0.55;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* FIXED: removed height: 300px — now auto height */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: rgba(10, 22, 40, 0.97);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 195px;
+  z-index: 100;
+}
+
+.dropdown a {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dropdown a:hover {
+  background: rgba(21, 101, 192, 0.35);
+  color: #fff;
+}
+
+.nav-cta {
+  background: #1565c0 !important;
+  color: #fff !important;
+  border-radius: 7px !important;
+  padding: 6px 16px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.nav-cta:hover {
+  background: #1976d2 !important;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 40px 32px 60px;
+  text-align: center;
+}
+
+/* ── Landing Container ── */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-section {
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255,255,255,0.05);
+  display: block;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(21, 101, 192, 0.22);
+  border: 1px solid rgba(21, 101, 192, 0.45);
+  color: #90caf9;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  background: #42a5f5;
+  border-radius: 50%;
+  animation: pulseDot 2s infinite;
+}
+
+.campus-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -1px;
+  max-width: 780px;
+  margin-bottom: 10px;
+  animation: fadeUp 0.6s ease 0.25s both;
+}
+
+h1 em {
+  font-style: normal;
+  color: #64b5f6;
+}
+
+.landing-container p {
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s ease 0.35s both;
+}
+
+.btn-wrap {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.6s ease 0.45s both;
+}
+
+.btn {
+  background: #050506;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.3px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 11px 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ── Slide Dots ── */
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 24px 0 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  padding: 0;
+}
+
+.dot.active {
+  background: #64b5f6;
+  transform: scale(1.45);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}

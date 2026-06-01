@@ -1,0 +1,121 @@
+<div class="chat-page">
+
+  <!-- Sidebar -->
+  <aside class="chat-sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/images/Advlogo.png" alt="AUCA Logo" class="sidebar-logo-img">
+      <div class="sidebar-brand">
+       
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-title">Quick Topics</div>
+    <ul class="sidebar-links">
+      <li><button class="sidebar-link" (click)="quickAsk('Show me Finance department staff')">💼 Finance</button></li>
+      <li><button class="sidebar-link" (click)="quickAsk('List IT department staff')">💻 IT Department</button></li>
+      <li><button class="sidebar-link" (click)="quickAsk('Who are the Managers?')">👔 Managers</button></li>
+      <li><button class="sidebar-link" (click)="quickAsk('Show Human Resources staff')">👥 Human Resources</button></li>
+      <li><button class="sidebar-link" (click)="quickAsk('List all academic staff')">🎓 Academics</button></li>
+      <li><button class="sidebar-link" (click)="quickAsk('Show administration staff')">🏛️ Administration</button></li>
+    </ul>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">
+      
+    </div>
+  </aside>
+
+  <!-- Main Chat -->
+  <div class="chat-container">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-left">
+      
+        <div class="header-info">
+          <div class="header-title">Smart Campus Assistant</div>
+          <div class="header-status"><span class="status-dot"></span>Online — AUCA Rwanda</div>
+        </div>
+      </div>
+      <div class="header-badge">AI Powered</div>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-box" #chatBox>
+
+      <!-- Welcome bubble -->
+      <div class="bot-message welcome-msg">
+        <div class="bot-avatar">
+          <img src="assets/images/Advlogo.png" alt="Bot">
+        </div>
+        <div class="message-bubble">
+          <div class="message-sender">AUCA Assistant</div>
+          <div>Welcome to the <strong>AUCA Smart Campus Assistant</strong> 👋<br>
+            Ask me about staff, departments, roles, or anything on campus.</div>
+          <div class="message-time">{{ getCurrentTime() }}</div>
+        </div>
+      </div>
+
+      <!-- Dynamic messages -->
+      <div
+        *ngFor="let msg of messages"
+        [ngClass]="msg.type === 'user' ? 'user-message' : 'bot-row'">
+
+        <!-- Bot row with avatar -->
+        <ng-container *ngIf="msg.type !== 'user'">
+          <div class="bot-avatar">
+            <img src="assets/images/Advlogo.png" alt="Bot">
+          </div>
+          <div class="message-bubble bot-bubble">
+            <div class="message-sender">AUCA Assistant</div>
+            <div [innerHTML]="msg.text"></div>
+            <div class="message-time">{{ msg.time || getCurrentTime() }}</div>
+          </div>
+        </ng-container>
+
+        <!-- User bubble -->
+        <ng-container *ngIf="msg.type === 'user'">
+          <div class="user-bubble">
+            <div [innerHTML]="msg.text"></div>
+            <div class="message-time user-time">{{ msg.time || getCurrentTime() }}</div>
+          </div>
+          <div class="user-avatar">You</div>
+        </ng-container>
+
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="bot-row typing-row" *ngIf="isTyping">
+        <div class="bot-avatar">
+          <img src="assets/images/Advlogo.png" alt="Bot">
+        </div>
+        <div class="message-bubble bot-bubble typing-bubble">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Input -->
+    <div class="input-area">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          [(ngModel)]="inputValue"
+          (keyup.enter)="sendRequest()"
+          placeholder="Ask about staff, roles, or departments (e.g. Finance, Manager, IT)"
+          class="chat-input">
+        <button (click)="sendRequest()" class="send-btn" [disabled]="!inputValue.trim()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="input-hint">Powered by AUCA Smart Campus · Masoro Campus, Kigali</div>
+    </div>
+
+  </div>
+</div>

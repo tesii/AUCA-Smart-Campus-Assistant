@@ -1,0 +1,97 @@
+<div class="page">
+
+  <div class="form-container">
+
+    <div class="header">
+      <img src="assets/images/registerlogo.png" class="logo" />
+    </div>
+
+    <div class="card">
+
+      <form (ngSubmit)="saveAdmin()" #adminForm="ngForm">
+
+        <!-- username  -->
+        <div class="input-group">
+          <label>username </label>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="admin.username"
+            placeholder="Enter user name"
+            required
+          />
+          <small class="error" *ngIf="adminForm.submitted && !admin.username">
+            username ID is required
+          </small>
+        </div>
+
+     
+
+        <!-- EMAIL -->
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="admin.email"
+            placeholder="Enter Email"
+            required
+          />
+          <small class="error" *ngIf="adminForm.submitted && !admin.email">
+            Email is required
+          </small>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="admin.password"
+            placeholder="Password"
+            required
+          />
+          <small class="error" *ngIf="adminForm.submitted && !admin.password">
+            Password is required
+          </small>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="input-group">
+          <label>Re-type Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="admin.confirmPassword"
+            placeholder="Confirm Password"
+            required
+          />
+
+          <small class="error"
+            *ngIf="adminForm.submitted && admin.password !== admin.confirmPassword">
+            Passwords do not match
+          </small>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit" [disabled]="adminForm.invalid">
+          Create Admin
+        </button>
+
+        <!-- LINK -->
+        <div class="login-link">
+          <a routerLink="/login">Already have an account? Login</a>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="image-panel">
+      <img src="assets/images/auca.jpg" class="auca" />
+    </div>
+
+  </div>
+
+</div>

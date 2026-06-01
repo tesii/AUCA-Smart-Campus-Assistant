@@ -1,0 +1,39 @@
+<div class="user-list-container">
+
+  <div class="header">
+    <h2>All Users</h2>
+    <p>Manage and view registered users</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="users.length > 0; else noUsers">
+
+    <table class="users-table">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email Address</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{ u.id }}</td>
+          <td>{{ u.name }}</td>
+          <td>{{ u.email }}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <ng-template #noUsers>
+    <div class="empty-state">
+      <h3>No Users Found</h3>
+      <p>Create a user to display data here.</p>
+    </div>
+  </ng-template>
+
+</div>
