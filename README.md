@@ -93,4 +93,6 @@ The application follows a client server architecture:
 * REST APIs facilitate communication between frontend and backend.
 * MySQL stores staff information and university data.
 
+## Video
 
+https://www.youtube.com/watch?v=DOuPsvu0fb0
